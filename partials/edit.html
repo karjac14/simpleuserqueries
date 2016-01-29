@@ -1,5 +1,27 @@
 <p> Welcome </p>
 
 
+<form>
+  <label for="fname">First Name</label>
+  <input type="text" name="name" id="fname" placeholder="{{edit.details.name.first}}"><br>
+  <label for="lname">Last Name</label>
+  <input type="text" name="name" id="lname" placeholder="{{edit.details.name.last}}"><br>
+  <label for="age">Age</label>
+  <input type="text" name="age" id="age" placeholder="{{edit.details.age}}"><br>
+  <label for="age">Eye Color</label>
+  <input type="text" name="eyeColor" id="eyeColor" placeholder="{{edit.details.eyeColor}}"><br>
 
-<button> Edit </button>
+
+
+  <label for="company">Company</label>
+  <input type="text" name="company" id="company" ng-model="edit.details.company" placeholder="{{edit.details.company}}"><br>
+  <label for="email">Email</label>
+  <input type="text" name="email" id="email" ng-model="edit.details.email" placeholder="{{edit.details.email}}"><br>
+  <label for="address">Address</label>
+  <input type="textarea" name="address" id="address" ng-model="edit.details.address" placeholder="{{edit.details.address}}"><br>
+  <input type="submit" ng-click="edit.submit()" value="Submit">
+
+</form>
+
+
+<button> Logout </button>

@@ -15,7 +15,7 @@ angular.module('userQueries', ['ngRoute', 'ngCookies'], function($routeProvider)
 
         .when('/', {
           templateUrl: 'partials/login.html',
-          controller: function ($location, $rootScope, $http, $cookies){
+          controller: function ($location, $cookies){
             var login = this;
             login.user = {};
 
@@ -23,23 +23,19 @@ angular.module('userQueries', ['ngRoute', 'ngCookies'], function($routeProvider)
 
             login.submit = function (){
 
-
-
-
-
               var usersdb = db('users').__wrapped__[0];
-              console.log(usersdb);
 
+              // get array index of a matching email
+              // returns -1 if no match
               var userIndex = _.findIndex(usersdb, function(o) { return o.email == login.user.email; });
-              console.log(userIndex);
 
+
+              //check if email and password match
               if (userIndex >= 0 ) {
                 if (usersdb[userIndex].password == login.user.password) {
-
-
+                  //store guid to cookie
                   $cookies.put("cguid", usersdb[userIndex].guid);
-
-
+                  //route user to userpage
                   $location.path('/user/'+ usersdb[userIndex]._id);
                 } else {
                   login.userIndex = null;
@@ -71,26 +67,24 @@ angular.module('userQueries', ['ngRoute', 'ngCookies'], function($routeProvider)
             var client = this;
             client.logged = {};
 
-
-
             //fresh copy of the DB
             var usersdb = db('users').__wrapped__[0];
 
-            console.log($routeParams.id);
-            console.log(usersdb);
-
             //fresh copy of the userindex based on _.id
             var userIndex = _.findIndex(usersdb, function(o) { return o._id == $routeParams.id; });
-            console.log(usersdb);
-            console.log($routeParams.id);
-            console.log(userIndex);
 
-            //compare if .id and guid matches (belongs to same user)
+            //compare if ._id and guid matches (belongs to same user)
             if (usersdb[userIndex].guid == $cookies.get("cguid")) {
               client.logged = usersdb[userIndex];
               console.log("Authorized");
             } else {
-              console.log("Anauthorize Access");
+              console.log("Unauthorized Access");
+              $location.path('/');
+            }
+
+
+            client.edit = function (){
+              $location.path('/edit/'+ usersdb[userIndex]._id);
             }
 
 
@@ -101,10 +95,47 @@ angular.module('userQueries', ['ngRoute', 'ngCookies'], function($routeProvider)
         })
 
 
-        .when('/edit', {
+        .when('/edit/:id', {
           templateUrl: 'partials/edit.html',
-          controller: function ($location, $rootScope){
-            //some codes here milestone 2
+          controller: function ($location, $routeParams, $cookies){
+
+            var edit = this;
+            edit.details = {};
+
+
+            //fresh copy of the DB
+            var usersdb = db('users').__wrapped__[0];
+
+            //fresh copy of the userindex based on _.id
+            var userIndex = _.findIndex(usersdb, function(o) { return o._id == $routeParams.id; });
+
+            if (usersdb[userIndex].guid == $cookies.get("cguid")) {
+              //authorized
+              edit.details = usersdb[userIndex];
+
+              console.log("Authorized");
+            } else {
+              //unauthorized
+              console.log("Unauthorized Access");
+              $location.path('/');
+            }
+
+            edit.submit = function (){
+              console.log(edit.newDetails);
+              console.log(db('users').__wrapped__[0][userIndex]);
+
+              db('users').__wrapped__[0][userIndex] = edit.details;
+
+              $location.path('/user/'+ usersdb[userIndex]._id);
+            }
+
+
+
+
+
+
+
+
           },
           controllerAs: 'edit'
         })
