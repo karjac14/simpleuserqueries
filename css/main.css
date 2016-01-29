@@ -128,6 +128,10 @@ h1.acme-logo {
   background-image: url("../img/bg_desktop.jpg");
   height: 80vh; }
 
+.invalidup {
+  margin-top: 8px;
+  color: red; }
+
 .user-details .balance-value {
   color: #0246a6;
   padding-bottom: 1em; }
