@@ -1,7 +1,126 @@
+
+//browesrfy's bundle
 (function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);var f=new Error("Cannot find module '"+o+"'");throw f.code="MODULE_NOT_FOUND",f}var l=n[o]={exports:{}};t[o][0].call(l.exports,function(e){var n=t[o][1][e];return s(n?n:e)},l,l.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({1:[function(require,module,exports){
 
+
+
+
+//initialize lowdb
 var low = require('lowdb');
-var db = low('data/db.json');
+var db = low();
+
+//angular module
+angular.module('userQueries', ['ngRoute', 'ngCookies'], function($routeProvider){
+      $routeProvider
+
+        .when('/', {
+          templateUrl: 'partials/login.html',
+          controller: function ($location, $rootScope, $http, $cookies){
+            var login = this;
+            login.user = {};
+
+
+
+            login.submit = function (){
+
+
+
+
+
+              var usersdb = db('users').__wrapped__[0];
+              console.log(usersdb);
+
+              var userIndex = _.findIndex(usersdb, function(o) { return o.email == login.user.email; });
+              console.log(userIndex);
+
+              if (userIndex >= 0 ) {
+                if (usersdb[userIndex].password == login.user.password) {
+
+
+                  $cookies.put("cguid", usersdb[userIndex].guid);
+
+
+                  $location.path('/user/'+ usersdb[userIndex]._id);
+                } else {
+                  login.userIndex = null;
+                  // TODO: make indication in view
+                  console.log("invalid username/Password")
+                }
+              } else {
+                login.userIndex = null;
+                // TODO: make indication in view
+                console.log("invalid Username/password")
+              }
+
+
+
+
+            }
+
+
+
+          },
+          controllerAs: 'login'
+        })
+
+
+        .when('/user/:id', {
+          templateUrl: 'partials/user.html',
+          controller: function ($location, $http, $routeParams, $cookies){
+
+            var client = this;
+            client.logged = {};
+
+
+
+            //fresh copy of the DB
+            var usersdb = db('users').__wrapped__[0];
+
+            console.log($routeParams.id);
+            console.log(usersdb);
+
+            //fresh copy of the userindex based on _.id
+            var userIndex = _.findIndex(usersdb, function(o) { return o._id == $routeParams.id; });
+            console.log(usersdb);
+            console.log($routeParams.id);
+            console.log(userIndex);
+
+            //compare if .id and guid matches (belongs to same user)
+            if (usersdb[userIndex].guid == $cookies.get("cguid")) {
+              client.logged = usersdb[userIndex];
+              console.log("Authorized");
+            } else {
+              console.log("Anauthorize Access");
+            }
+
+
+
+
+          },
+          controllerAs: 'client'
+        })
+
+
+        .when('/edit', {
+          templateUrl: 'partials/edit.html',
+          controller: function ($location, $rootScope){
+            //some codes here milestone 2
+          },
+          controllerAs: 'edit'
+        })
+}).controller('assignDB', function($http) {
+
+  $http.get("/data/users.json")
+    .then(function(response){
+      db('users').push(response.data);
+  });
+
+
+});
+
+
+
+
 
 },{"lowdb":2}],2:[function(require,module,exports){
 'use strict';

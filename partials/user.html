@@ -1,5 +1,30 @@
-<p> Welcome Karlo! </p>
+<h3> Welcome {{client.logged.name.first}} {{client.logged.name.last}}! </h3>
+
+<div>
+<h4> Current Balance: </h4>
+<h3> {{client.logged.balance}} </h3>
+</div>
+
+<div>
+  <img ng-src="{{client.logged.picture}}">
+  <div>
+    <p> Age: {{client.logged.age}} </p>
+    <p> Eye Color: {{client.logged.eyeColor}} </p>
+    <p> Company: {{client.logged.company}} </p>
+</div>
+
+<div>
+  <p> Email: {{client.logged.email}} </p>
+  <p> Phone: {{client.logged.phone}} </p>
+  <p> Address: {{client.logged.address}} </p>
+</div>
 
 
 
-<button> Edit </button>
+
+
+
+
+
+<button ng-click="client.edit()"> Edit Profile </button>
+<button> Logout </button>

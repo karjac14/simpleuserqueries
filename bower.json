@@ -21,6 +21,8 @@
     "angular-route": "~1.4.9",
     "jquery": "~2.2.0",
     "bootstrap": "~3.3.6",
-    "font-awesome": "~4.5.0"
+    "font-awesome": "~4.5.0",
+    "requirejs": "~2.1.22",
+    "angular-cookies": "~1.4.9"
   }
 }

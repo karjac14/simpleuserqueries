@@ -1,6 +1,8 @@
 <p> Login </p>
 
-<input type="text"></input>
-<input type="text"></input>
+<input id="email" type="text" value="gibson.duke@zillar.com" ng-model="login.user.email"></input>
+<input id="password" type="text" value="ndfadsf(d" ng-model="login.user.password"></input>
 
-<button> Login </button>
+<button ng-click="login.submit()"> Login </button>
+
+<p>Test: {{login.test}}</p>
