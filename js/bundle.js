@@ -16,20 +16,17 @@ angular.module('userQueries', ['ngRoute', 'ngCookies'], function($routeProvider)
         .when('/', {
           templateUrl: 'partials/login.html',
           controller: function ($location, $cookies){
+
+
             var login = this;
             login.user = {};
-
-
 
             login.submit = function (){
 
               var usersdb = db('users').__wrapped__[0];
-
               // get array index of a matching email
               // returns -1 if no match
               var userIndex = _.findIndex(usersdb, function(o) { return o.email == login.user.email; });
-
-
               //check if email and password match
               if (userIndex >= 0 ) {
                 if (usersdb[userIndex].password == login.user.password) {
@@ -47,22 +44,14 @@ angular.module('userQueries', ['ngRoute', 'ngCookies'], function($routeProvider)
                 // TODO: make indication in view
                 console.log("invalid Username/password")
               }
-
-
-
-
             }
-
-
-
           },
           controllerAs: 'login'
         })
 
-
         .when('/user/:id', {
           templateUrl: 'partials/user.html',
-          controller: function ($location, $http, $routeParams, $cookies){
+          controller: function ($location, $http, $routeParams, $cookies, $rootScope){
 
             var client = this;
             client.logged = {};
@@ -76,32 +65,25 @@ angular.module('userQueries', ['ngRoute', 'ngCookies'], function($routeProvider)
             //compare if ._id and guid matches (belongs to same user)
             if (usersdb[userIndex].guid == $cookies.get("cguid")) {
               client.logged = usersdb[userIndex];
+              $rootScope.logged = true;
               console.log("Authorized");
             } else {
               console.log("Unauthorized Access");
               $location.path('/');
             }
-
-
             client.edit = function (){
               $location.path('/edit/'+ usersdb[userIndex]._id);
             }
-
-
-
-
           },
           controllerAs: 'client'
         })
 
-
         .when('/edit/:id', {
           templateUrl: 'partials/edit.html',
-          controller: function ($location, $routeParams, $cookies){
+          controller: function ($location, $routeParams, $cookies, $rootScope){
 
             var edit = this;
             edit.details = {};
-
 
             //fresh copy of the DB
             var usersdb = db('users').__wrapped__[0];
@@ -112,6 +94,7 @@ angular.module('userQueries', ['ngRoute', 'ngCookies'], function($routeProvider)
             if (usersdb[userIndex].guid == $cookies.get("cguid")) {
               //authorized
               edit.details = usersdb[userIndex];
+              $rootScope.logged = true;
 
               console.log("Authorized");
             } else {
@@ -128,18 +111,12 @@ angular.module('userQueries', ['ngRoute', 'ngCookies'], function($routeProvider)
 
               $location.path('/user/'+ usersdb[userIndex]._id);
             }
-
-
-
-
-
-
-
-
           },
           controllerAs: 'edit'
         })
 }).controller('assignDB', function($http, $cookies, $location, $rootScope) {
+
+  $rootScope.logged = false;
 
   $http.get("/data/users.json")
     .then(function(response){
@@ -148,14 +125,9 @@ angular.module('userQueries', ['ngRoute', 'ngCookies'], function($routeProvider)
 
   $rootScope.logout = function (){
     $cookies.remove("cguid");
+    $rootScope.logged = false;
     $location.path('#/');
   }
-
-
-}).service('access', function () {
-
-
-
 });
 
 

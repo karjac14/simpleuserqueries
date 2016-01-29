@@ -1,5 +1,5 @@
 <!doctype html>
-<html class="no-js" lang="eng">
+<html class="no-js" lang="eng" ng-app="userQueries">
     <head>
         <meta charset="utf-8">
         <meta http-equiv="x-ua-compatible" content="ie=edge">
@@ -19,7 +19,7 @@
 
 
 
-    <body ng-app="userQueries">
+    <body ng-controller="assignDB" >
 
       <nav class="navbar">
         <div class="container">
@@ -30,11 +30,13 @@
               <span class="icon-bar"></span>
               <span class="icon-bar"></span>
             </button>
-            <a href="#"> <h1 class="navbar-brand acme-logo" >ACME<span class=acme-logo-less>financial</span></h1> </a>
+            <a href="#/"> <h1 class="navbar-brand acme-logo" >ACME<span class=acme-logo-less>financial</span></h1> </a>
           </div>
           <div id="navbar" class="collapse navbar-collapse">
             <ul class="nav navbar-nav navbar-right">
-              <li class="active"><a href="#" ng-click=logout()>Logout</a></li>
+              <li ><a href="#/" ng-click=logout() ng-show=logged>Logout</a></li>
+              <li ><a href="#/" >Services</a></li>
+              <li ><a href="#/" >Contact Us</a></li>
             </ul>
           </div><!--/.nav-collapse -->
         </div>
@@ -43,8 +45,7 @@
 
 
 
-
-        <ng-view ng-controller="assignDB" ></ng-view>
+        <ng-view ></ng-view>
 
         <footer class="footer text-center navbar-fixed-bottom">
           <p>&copy; 2015 ACME Company, Inc., a fictional subsidiary.</p>
