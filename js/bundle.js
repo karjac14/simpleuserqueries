@@ -20,6 +20,7 @@ angular.module('userQueries', ['ngRoute', 'ngCookies'], function($routeProvider)
 
             var login = this;
             login.user = {};
+            login.invalid = false;
 
             login.submit = function (){
 
@@ -36,12 +37,12 @@ angular.module('userQueries', ['ngRoute', 'ngCookies'], function($routeProvider)
                   $location.path('/user/'+ usersdb[userIndex]._id);
                 } else {
                   login.userIndex = null;
-                  // TODO: make indication in view
+                  login.invalid = true;
                   console.log("invalid username/Password")
                 }
               } else {
                 login.userIndex = null;
-                // TODO: make indication in view
+                login.invalid = true;
                 console.log("invalid Username/password")
               }
             }
