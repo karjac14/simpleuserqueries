@@ -1,0 +1,26 @@
+{
+  "name": "simpleuserqueries",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "browser-sync start --server --directory --startPath index.html --files='*.html, css/main.css'",
+    "sass": "node-sass scss/main.scss css/main.css",
+    "install:bower": "bower install --save"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/karjac14/simpleuserqueries.git"
+  },
+  "author": "Karlo Eleuterio",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/karjac14/simpleuserqueries/issues"
+  },
+  "homepage": "https://github.com/karjac14/simpleuserqueries#readme",
+  "dependencies": {
+    "lowdb": "^0.12.2",
+    "node-sass": "^3.4.2"
+  }
+}
