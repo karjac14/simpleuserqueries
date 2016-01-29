@@ -1,0 +1,43 @@
+
+//custom style for header
+
+$blue: #0246a6;
+
+h1.acme-logo {
+  font-family: 'Passion One', cursive;
+  font-size: 2em;
+  color: $blue;
+  margin-top: 5px;
+  .acme-logo-less {
+    font-family: 'Lato', cursive;
+    font-size: 0.85em;
+  }
+}
+
+.navbar {
+  margin-bottom: 0px;
+  // height: 60px;
+}
+
+nav ul{
+  li a {
+    @media (min-width: 768px) {
+      padding-top: 8px;
+      padding-bottom: 8px;
+    }
+  }
+}
+
+.icon-bar {
+  background-color: $blue;
+  margin-top: 15px;
+}
+
+.navbar-collapse .collapse .in {
+  border-top: 2px $blue;
+  border-bottom: 2px $blue;
+}
+
+.footer {
+  background-color: white;
+}

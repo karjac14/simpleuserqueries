@@ -1,27 +1,31 @@
-<p> Welcome </p>
+
+<h4 class="balance-label text-center"> Edit Details for: <span class="fname">{{edit.details.name.first}} {{edit.details.name.last}} </span></h4>
+
+<div class="container-fluid">
+<form id="usrform" class="col-xs-12 col-sm-offset-1 col-sm-10 col-md-offset-1 col-md-10">
+
+  <label class="form-full col-xs-12 col-sm-offset-1 col-sm-10 col-md-offset-3 col-md-6" for="fname">First Name</label>
+  <input class="form-full col-xs-12 col-sm-offset-1 col-sm-10 col-md-offset-3 col-md-6" type="text" name="name" id="fname" ng-model="edit.details.name.first" placeholder="{{edit.details.name.first}}">
+  <label class="form-full col-xs-12 col-sm-offset-1 col-sm-10 col-md-offset-3 col-md-6" for="lname">Last Name</label>
+  <input class="form-full col-xs-12 col-sm-offset-1 col-sm-10 col-md-offset-3 col-md-6" type="text" name="name" id="lname" ng-model="edit.details.name.last" placeholder="{{edit.details.name.last}}">
+  <label class="form-full col-xs-12 col-sm-offset-1 col-sm-10 col-md-offset-3 col-md-6" for="age">Age</label>
+  <input class="form-short col-xs-12 col-sm-offset-1 col-sm-10 col-md-offset-3 col-md-6" type="number" min="16" max="99" name="age" id="age" ng-model="edit.details.age" placeholder="{{edit.details.age}}">
+  <label class="form-full col-xs-12 col-sm-offset-1 col-sm-10 col-md-offset-3 col-md-6" for="eyeColor">Eye Color</label>
+  <input class="form-short col-xs-12 col-sm-offset-1 col-sm-10 col-md-offset-3 col-md-6" type="text" name="eyeColor" id="eyeColor" ng-model="edit.details.eyeColor" placeholder="{{edit.details.eyeColor}}">
 
 
-<form>
-  <label for="fname">First Name</label>
-  <input type="text" name="name" id="fname" placeholder="{{edit.details.name.first}}"><br>
-  <label for="lname">Last Name</label>
-  <input type="text" name="name" id="lname" placeholder="{{edit.details.name.last}}"><br>
-  <label for="age">Age</label>
-  <input type="text" name="age" id="age" placeholder="{{edit.details.age}}"><br>
-  <label for="age">Eye Color</label>
-  <input type="text" name="eyeColor" id="eyeColor" placeholder="{{edit.details.eyeColor}}"><br>
 
-
-
-  <label for="company">Company</label>
-  <input type="text" name="company" id="company" ng-model="edit.details.company" placeholder="{{edit.details.company}}"><br>
-  <label for="email">Email</label>
-  <input type="text" name="email" id="email" ng-model="edit.details.email" placeholder="{{edit.details.email}}"><br>
-  <label for="address">Address</label>
-  <input type="textarea" name="address" id="address" ng-model="edit.details.address" placeholder="{{edit.details.address}}"><br>
-  <input type="submit" ng-click="edit.submit()" value="Submit">
-
+  <label class="form-full col-xs-12 col-sm-offset-1 col-sm-10 col-md-offset-3 col-md-6" for="company">Company</label>
+  <input class="form-full col-xs-12 col-sm-offset-1 col-sm-10 col-md-offset-3 col-md-6" type="text" name="company" id="company" ng-model="edit.details.company" placeholder="{{edit.details.company}}">
+  <label class="form-full col-xs-12 col-sm-offset-1 col-sm-10 col-md-offset-3 col-md-6" for="email">Email</label>
+  <input class="form-full col-xs-12 col-sm-offset-1 col-sm-10 col-md-offset-3 col-md-6" type="email" name="email" id="email" ng-model="edit.details.email" placeholder="{{edit.details.email}}">
+  <label class="form-full col-xs-12 col-sm-offset-1 col-sm-10 col-md-offset-3 col-md-6" for="email">Phone</label>
+  <input class="form-full col-xs-12 col-sm-offset-1 col-sm-10 col-md-offset-3 col-md-6" type="tel" name="tel" id="tel" ng-model="edit.details.phone" placeholder="{{edit.details.email}}">
+  <label class="form-full col-xs-12 col-sm-offset-1 col-sm-10 col-md-offset-3 col-md-6" for="address">Address</label>
+  <textarea class="form-full col-xs-12 col-sm-offset-1 col-sm-10 col-md-offset-3 col-md-6" form="usrform" name="address" id="address" rows="3" ng-model="edit.details.address" placeholder="{{edit.details.address}}"></textarea>
+  <div class="text-center submit-pnew col-sm-offset-1 col-sm-10 col-md-offset-3 col-md-6">
+    <button id="singlebutton" name="singlebutton" class="btn btn-primary" ng-click="edit.submit()" value="Submit">Submit Changes</button>
+  </div>
 </form>
 
-
-<button> Logout </button>
+  </div>

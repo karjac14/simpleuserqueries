@@ -139,12 +139,21 @@ angular.module('userQueries', ['ngRoute', 'ngCookies'], function($routeProvider)
           },
           controllerAs: 'edit'
         })
-}).controller('assignDB', function($http) {
+}).controller('assignDB', function($http, $cookies, $location, $rootScope) {
 
   $http.get("/data/users.json")
     .then(function(response){
       db('users').push(response.data);
   });
+
+  $rootScope.logout = function (){
+    $cookies.remove("cguid");
+    $location.path('#/');
+  }
+
+
+}).service('access', function () {
+
 
 
 });

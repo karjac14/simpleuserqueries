@@ -6,6 +6,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "browser-sync start --server --directory --startPath index.html --files='*.html, css/main.css'",
+    "sass": "node-sass scss/main.scss css/main.css",
     "install:bower": "bower install --save"
   },
   "repository": {
@@ -19,6 +20,7 @@
   },
   "homepage": "https://github.com/karjac14/simpleuserqueries#readme",
   "dependencies": {
-    "lowdb": "^0.12.2"
+    "lowdb": "^0.12.2",
+    "node-sass": "^3.4.2"
   }
 }

@@ -1,0 +1,35 @@
+
+//style for user profile page
+
+$blue: #0246a6;
+
+.user-details {
+  .balance-value {
+    color: $blue;
+    padding-bottom: 1em;
+  }
+  .profile-details{
+    padding-left: 5%;
+    .avatar{
+      vertical-align: top;
+      display: inline-block;
+      //break point of bootstraap in xs
+
+        width: 15%;
+
+    }
+    .profile{
+      vertical-align: top;
+      display: inline-block;
+      border-left: 2px solid $blue;
+      padding-left: 10px;
+      margin-left: 10px;
+
+        width: 65%;
+
+      p{
+        overflow: auto;
+      }
+    }
+  }
+}

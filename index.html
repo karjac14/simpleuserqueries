@@ -9,20 +9,48 @@
 
         <link rel="apple-touch-icon" href="apple-touch-icon.png">
         <!-- Place favicon.ico in the root directory -->
+        <link href='https://fonts.googleapis.com/css?family=Passion+One' rel='stylesheet' type='text/css'>
+        <link href='https://fonts.googleapis.com/css?family=Lato:400,700' rel='stylesheet' type='text/css'>
         <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css">
         <link rel="stylesheet" href="css/normalize.css">
         <link rel="stylesheet" href="css/main.css">
         <script src="js/vendor/modernizr-2.8.3.min.js"></script>
     </head>
-    <header>
-      <h1>ACME Financials</h1>
-    </header>
+
+
+
     <body ng-app="userQueries">
-      <div class="main" ng-controller="assignDB">
 
-        <ng-view></ng-view>
+      <nav class="navbar">
+        <div class="container">
+          <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+              <span class="sr-only">Toggle navigation</span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+            <a href="#"> <h1 class="navbar-brand acme-logo" >ACME<span class=acme-logo-less>financial</span></h1> </a>
+          </div>
+          <div id="navbar" class="collapse navbar-collapse">
+            <ul class="nav navbar-nav navbar-right">
+              <li class="active"><a href="#" ng-click=logout()>Logout</a></li>
+            </ul>
+          </div><!--/.nav-collapse -->
+        </div>
+      </nav>
 
-      </div>
+
+
+
+
+        <ng-view ng-controller="assignDB" ></ng-view>
+
+        <footer class="footer text-center navbar-fixed-bottom">
+          <p>&copy; 2015 ACME Company, Inc., a fictional subsidiary.</p>
+        </footer>
+
+
         <!-- <script src="bower_components/requirejs/require.js"></script> -->
         <script src="bower_components/jquery/dist/jquery.min.js"></script>
         <script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
@@ -30,7 +58,6 @@
         <script src="bower_components/angular-route/angular-route.min.js"></script>
         <script src="bower_components/angular-cookies/angular-cookies.js"></script>
         <script src="js/plugins.js"></script>
-
         <script src="js/bundle.js"></script>
 
 

@@ -95,8 +95,16 @@ textarea {
    Author's custom styles
    ========================================================================== */
 
+@import 'header';
+@import 'login';
+@import 'user';
+@import 'edit';
 
 
+body {
+  font-family: 'Lato', sans-serif;
+
+}
 
 
 
