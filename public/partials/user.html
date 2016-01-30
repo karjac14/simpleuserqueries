@@ -1,0 +1,28 @@
+<div class="container">
+
+<div class="user-details col-sm-offset-1 col-sm-10 col-md-offset-2 col-md-8">
+
+<h3 class=""> Welcome {{client.logged.name.first | uppercase}} {{client.logged.name.last | uppercase}}! </h3>
+<hr>
+<div class="balance text-center">
+  <h4 class="balance-label"> Current Balance: </h4>
+  <h3 class="balance-value"> {{client.logged.balance}} </h3>
+</div>
+<hr>
+<div class="profile-details">
+  <img class="avatar" ng-src="{{client.logged.picture}}">
+  <div class="profile">
+    <p> Age: {{client.logged.age}} </p>
+    <p> Eye Color: {{client.logged.eyeColor | uppercase}} </p>
+    <p> Company: {{client.logged.company | uppercase}} </p>
+    <p> Email: {{client.logged.email | uppercase}} </p>
+    <p> Phone: {{client.logged.phone | uppercase}} </p>
+    <p> Address: {{client.logged.address | uppercase}} </p>
+  </div>
+</div>
+
+<div class="text-center">
+  <button id="singlebutton" name="singlebutton" class="btn btn-primary" ng-click="client.edit()">Edit Details</button>
+</div>
+
+</div>
