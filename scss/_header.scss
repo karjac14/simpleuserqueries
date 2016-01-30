@@ -5,9 +5,9 @@ $blue: #0246a6;
 
 h1.acme-logo {
   font-family: 'Passion One', cursive;
-  font-size: 2em;
+  font-size: 2.5em;
   color: $blue;
-  margin-top: 5px;
+  margin: 0.17em 0;
   .acme-logo-less {
     font-family: 'Lato', cursive;
     font-size: 0.85em;
@@ -19,10 +19,10 @@ h1.acme-logo {
   // height: 60px;
 }
 
-nav ul{
+ul.navbar-nav{
   li a {
     @media (min-width: 768px) {
-      padding-top: 8px;
+      padding-top: 22px;
       padding-bottom: 8px;
     }
   }

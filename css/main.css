@@ -79,9 +79,9 @@ textarea {
    ========================================================================== */
 h1.acme-logo {
   font-family: 'Passion One', cursive;
-  font-size: 2em;
+  font-size: 2.5em;
   color: #0246a6;
-  margin-top: 5px; }
+  margin: 0.17em 0; }
   h1.acme-logo .acme-logo-less {
     font-family: 'Lato', cursive;
     font-size: 0.85em; }
@@ -90,8 +90,8 @@ h1.acme-logo {
   margin-bottom: 0px; }
 
 @media (min-width: 768px) {
-  nav ul li a {
-    padding-top: 8px;
+  ul.navbar-nav li a {
+    padding-top: 22px;
     padding-bottom: 8px; } }
 
 .icon-bar {
