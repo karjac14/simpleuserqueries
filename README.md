@@ -2,8 +2,8 @@
 ### Live Site: https://acmeuserqueries.firebaseapp.com/
 
 ### Sample Account:
-    username: `gibson.duke@zillar.com`
-    password: `ndfadsf(d`
+    username: gibson.duke@zillar.com
+    password: ndfadsf(d
 
 ### New things I have learned:
 
